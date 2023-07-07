@@ -1,0 +1,12 @@
+{
+    "@class" : "org.apereo.cas.services.RegexRegisteredService",
+    "serviceId" : "^http.*",
+    "id" : 100,
+    "name": "test",
+    "multifactorPolicy" : {
+      "@class" : "org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy",
+      "multifactorAuthenticationProviders" : [ "java.util.LinkedHashSet", [ "mfa-gauth" ] ],
+      "bypassEnabled": false,
+      "forceExecution": true
+    }
+  }

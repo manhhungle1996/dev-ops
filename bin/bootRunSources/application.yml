@@ -1,0 +1,68 @@
+# Application properties that need to be
+# embedded within the web application can be included here
+
+# Application properties that need to be
+# embedded within the web application can be included here
+server:
+  port: 9999
+  ssl: 
+    key-store: classpath:/etc/cas/thekeystore
+    key-store-password: changeit
+    key-password: changeit
+    enabled: false
+
+spring:
+  application:
+    name: CAS
+       
+cas:
+  server:
+      name: https://localhost:9999
+  authn:
+    json:
+      location: classpath:/etc/cas/etc/cas/authn.json
+    authentication-attribute-release:
+      enabled: true
+    attribute-repository:
+      core:
+        default-attributes-to-release: firstName,lastName,gauth
+    mfa:  
+      gauth: 
+        json:
+          location: classpath:/etc/cas/gauth.json
+        core:
+          issuer: CASIssuer
+          label: CASLabel
+      triggers:
+        authentication:
+          global-authentication-attribute-name-triggers: gauth
+          global-authentication-attribute-value-regex: true
+  monitor:
+    endpoints:
+      endpoint:
+        qrDevices:
+          access: PERMIT
+        status:
+          access: PERMIT
+        gauthCredentialRepository:
+          access: PERMIT
+
+
+
+
+          
+
+management:
+  endpoint:
+    qrDevices:
+      enabled: true
+    status:
+      enabled: true
+    gauthCredentialRepository:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: status,qrDevices,gauthCredentialRepository
+
+    

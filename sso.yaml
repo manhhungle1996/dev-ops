@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sso
+spec:
+  containers:
+    - name: sos
+      image: sso:v1.0.6
+      ports:
+       - containerPort: 9999
